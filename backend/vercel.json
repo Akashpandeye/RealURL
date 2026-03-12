@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/health",
+      "dest": "/api/health.js"
+    },
+    {
+      "src": "/api/shorten",
+      "dest": "/api/shorten.js"
+    },
+    {
+      "src": "/api/codes",
+      "dest": "/api/codes.js"
+    },
+    {
+      "src": "/api/(?<id>[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+      "dest": "/api/[id].js"
+    },
+    {
+      "src": "/api/(?<shortCode>[^/]+)",
+      "dest": "/api/[shortCode].js"
+    }
+  ]
+}
+
